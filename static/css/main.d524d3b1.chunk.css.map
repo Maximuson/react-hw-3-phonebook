@@ -1,0 +1,1 @@
+{"version":3,"sources":["Section.module.css"],"names":[],"mappings":"AAAA,wBACE,YAAa,CACb,gCAAqC,CACrC,kCACF","file":"main.d524d3b1.chunk.css","sourcesContent":[".section {\n  padding: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.25);\n  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);\n}\n"]}
