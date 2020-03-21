@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ContactForm from '../ContactForm/ContactForm';
 import Section from '../Section/Section';
 
-import { ContactList } from '../ContactList/ContactList';
+import ContactList from '../ContactList/ContactList';
 import ContactsFilter from '../ContactsFilter/ContactsFilter';
 
 export default class App extends Component {
@@ -25,7 +25,6 @@ export default class App extends Component {
     }
     this.setState(ps => {
       return {
-        ...ps,
         contacts,
       };
     });
@@ -65,10 +64,9 @@ export default class App extends Component {
 
   handleDelete = id => {
     this.setState(ps => {
-      const filtered = ps.contacts.filter(item => {
-        return item.id !== id;
-      });
-      return { contacts: filtered };
+      return {
+        contacts: ps.contacts.filter(item => item.id !== id),
+      };
     });
   };
 

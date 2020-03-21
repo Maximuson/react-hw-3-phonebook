@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Cleave from 'cleave.js/react';
 import uuid from 'uuid';
 
 export default class ContactForm extends Component {
-  constructor(props) {
-    super();
-    this.handleSubmit = props.handleSubmit;
-  }
   state = {
     name: '',
     number: '',
@@ -21,7 +19,7 @@ export default class ContactForm extends Component {
       name: this.state.name,
       number: this.state.number,
     };
-    this.handleSubmit(e, contact);
+    this.props.handleSubmit(e, contact);
     this.setState({
       name: '',
       number: '',
@@ -34,6 +32,7 @@ export default class ContactForm extends Component {
         <div>
           <h3>Name</h3>
           <input
+            placeholder="Enter name"
             onChange={this.handleInput}
             name="name"
             value={name}
@@ -42,11 +41,16 @@ export default class ContactForm extends Component {
         </div>
         <div>
           <h3>Number</h3>
-          <input
+          <Cleave
             onChange={this.handleInput}
             name="number"
+            placeholder="Enter phone number"
             value={number}
-            type="text"
+            options={{
+              delimiter: '-',
+              blocks: [3, 2, 2],
+              numericOnly: true,
+            }}
           />
         </div>
         <input type="submit" value="Add" />
@@ -54,3 +58,7 @@ export default class ContactForm extends Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+};

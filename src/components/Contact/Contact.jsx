@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Contact = ({ name = '', number = '', handleDelete }) => (
   <div>
@@ -6,9 +7,15 @@ const Contact = ({ name = '', number = '', handleDelete }) => (
       {name || 'noName'}: {number || 'noNumber'}
     </span>
     <button onClick={handleDelete} type="button">
-      Dele
+      Delete
     </button>
   </div>
 );
+
+Contact.propTypes = {
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  handleDelete: PropTypes.func.isRequired,
+};
 
 export default Contact;
